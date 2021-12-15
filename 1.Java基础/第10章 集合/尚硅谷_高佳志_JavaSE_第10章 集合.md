@@ -750,6 +750,8 @@ Set集合支持的遍历方式和Collection集合一样：foreach和Iterator。
 
 Set的常用实现类有：HashSet、TreeSet、LinkedHashSet。
 
+> HashSet和LinkedHashSet 存储自定义类型数据时，需要重写hashcode()和equals();
+
 ### 10.6.1 HashSet：无序，且唯一
 
 HashSet 是 Set 接口的典型实现，大多数时候使用 Set 集合时都使用这个实现类。
@@ -1184,6 +1186,8 @@ public class TestMap {
 
 Map接口的常用实现类：HashMap、TreeMap、LinkedHashMap和Properties。其中HashMap是 Map 接口使用频率最高的实现类。
 
+HashMap和LinkedHashMap key 存储自定义类型数据时，需要重写hashcode()和equals();
+
 ![image-20211214164230239](尚硅谷_高佳志_JavaSE_第10章 集合.assets/image-20211214164230239.png)
 
 #### **1、HashMap和Hashtable的区别与联系：无序唯一**
@@ -1436,8 +1440,7 @@ Collections 是一个操作 Set、List 和 Map 等集合的工具类。Collectio
 * public static <T> void sort(List<T> list,Comparator<? super T> c)根据指定的 Comparator 产生的顺序对 List 集合元素进行排序
 * public static void swap(List<?> list,int i,int j)将指定 list 集合中的 i 处元素和 j 处元素进行交换
 * public static int frequency(Collection<?> c,Object o)返回指定集合中指定元素的出现次数
-* public static <T> void copy(List<? super T> dest,List<? extends T> src)将src中的内容复制到dest中
-* public static <T> boolean replaceAll(List<T> list，T oldVal，T newVal)：使用新值替换 List 对象的所有旧值
+* public static <T> void copy(List<? supertatic <T> boolean replaceAll(List<T> list，T oldVal，T newVal)：使用新值替换 List 对象的所有旧值
 * Collections 类中提供了多个 synchronizedXxx() 方法，该方法可使将指定集合包装成线程同步的集合，从而可以解决多线程并发访问集合时的线程安全问题
 * Collections类中提供了多个unmodifiableXxx()方法，该方法返回指定 Xxx的不可修改的视图。
 
