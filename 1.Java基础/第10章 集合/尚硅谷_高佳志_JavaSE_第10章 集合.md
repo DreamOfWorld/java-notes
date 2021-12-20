@@ -74,11 +74,7 @@ Collection<E>是所有单列集合的父接口，因此在Collection中定义了
 
 （1）Object[] toArray()：返回包含当前集合中所有元素的数组
 
- (2) String toString(T[] t):String str = list.toString(new String[]{})
-
-7.清空数组
-
- （1）clear()
+ (2) String toArray()(T[] t):String str = list.toArray()(new String[]{})
 
 方法演示：
 
@@ -542,11 +538,6 @@ List除了从Collection集合继承的方法外，List 集合里添加了一些�
 
 * E remove(int index)
 * E set(int index, E ele)
-
-5、转换成string类型数组
-
-- String toString()
-- String toString(T[] t):String str = list.toString(new String[]{})
 
 6.List Arrays.asList(T...a)`:返回一个固定长度的List。
 
@@ -1418,6 +1409,14 @@ public Iterator<E> iterator() {
 ### 10.6.6 hash表详细结构与HashMap源码分析
 
 ![](imgs\红黑树版hash表.png)
+
+![image-20211216090541040](尚硅谷_高佳志_JavaSE_第10章 集合.assets/image-20211216090541040.png)
+
+```
+如果不满足条件会进行扩容
+```
+
+
 
 ## 10.7 集合框架
 

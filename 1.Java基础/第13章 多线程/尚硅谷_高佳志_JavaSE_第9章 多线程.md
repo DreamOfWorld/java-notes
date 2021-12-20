@@ -291,7 +291,7 @@ public static void main(String[] args) {
 }
 ```
 
-### 9.3.3 线程控制常见方法
+### 9.3.3 线程控制常见方法      
 
 * public void start() :导致此线程开始执行; Java虚拟机调用此线程的run方法。
 
@@ -666,16 +666,16 @@ public static void main(String[] args) {
    - `TIMED_WAITING`：当前线程执行过程中遇到Thread类的sleep或join，Object类的wait，LockSupport类的park方法，并且在调用这些方法时，设置了时间，那么当前线程会进入TIMED_WAITING，直到时间到，或被中断。
 
    - `WAITING`：当前线程执行过程中遇到遇到Object类的wait，Thread类的join，LockSupport类的park方法，并且在调用这些方法时，没有指定时间，那么当前线程会进入WAITING状态，直到被唤醒。
+- 通过Object类的wait进入`WAITING`状态的要有Object的notify/notifyAll唤醒；
+  
+- 通过Condition的await进入`WAITING`状态的要有Conditon的signal方法唤醒；
+  
+- 通过LockSupport类的park方法进入`WAITING`状态的要有LockSupport类的unpark方法唤醒
+  
+- 通过Thread类的join进入`WAITING`状态，只有调用join方法的线程对象结束才能让当前线程恢复；
+  
 
-     - 通过Object类的wait进入`WAITING`状态的要有Object的notify/notifyAll唤醒；
-
-     - 通过Condition的await进入`WAITING`状态的要有Conditon的signal方法唤醒；
-
-     - 通过LockSupport类的park方法进入`WAITING`状态的要有LockSupport类的unpark方法唤醒
-
-     - 通过Thread类的join进入`WAITING`状态，只有调用join方法的线程对象结束才能让当前线程恢复；
-
-   *说明：当从`WAITING`或`TIMED_WAITING`恢复到`Runnable`状态时，如果发现当前线程没有得到监视器锁，那么会立刻转入`BLOCKED`状态。*
+*说明：当从`WAITING`或`TIMED_WAITING`恢复到`Runnable`状态时，如果发现当前线程没有得到监视器锁，那么会立刻转入`BLOCKED`状态。*
 
 ![image-20200521184149034](imgs/image-20200521184149034.png)
 
@@ -706,7 +706,7 @@ public static void main(String[] args) {
    		w2.start();
    		w3.start();
    	}
-   }
+   }         
    class Window extends Thread{
    	public void run(){
    		int total = 100;
